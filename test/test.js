@@ -27,7 +27,7 @@ describe('/api/flight', function() {
           assert(typeof result[i].price === 'number', 'Price should be a number');
         }
         for (let i = 0; i < result.length - 1; i++) {
-          assert(result[i] < result[i+1], 'Array should be ordered by ascending price');
+          assert(result[i].price <= result[i+1].price, 'Array should be ordered by ascending price');
         }
       });
 

@@ -23,10 +23,21 @@ const csvOptions = {
 
 var importCsv = new importer(csvOptions);
 
+var lastCall = new Date(new Date() - 2 * 60000);
+var lastResults = '';
+
 http.createServer(function (req, res) {
   if (req.url !== "/api/flights") {
     res.writeHead(404);
     res.write('Not Found');
+    return res.end();
+  }
+
+  if (new Date() - lastCall < 60000) {
+    console.log('JIPIB :', new Date() - lastCall);
+    console.log('OUHBYGVY8V :', lastResults);
+    res.writeHead(200, {'Content-Type': 'json/application'});
+    res.write(lastResults);
     return res.end();
   }
 
@@ -120,8 +131,10 @@ http.createServer(function (req, res) {
     });
 
     results = results.slice(0, 50);
+    lastResults = JSON.stringify(results);
+    lastCall = new Date();
     res.writeHead(200, {'Content-Type': 'json/application'});
-    res.write(JSON.stringify(results));
+    res.write(lastResults);
     res.end();
   }).catch(error => {
     console.log('ERROR : ', error);
