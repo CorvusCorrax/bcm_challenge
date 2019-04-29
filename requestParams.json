@@ -1,0 +1,20 @@
+{
+  "airJazz": {
+    "url": "https://my.api.mockaroo.com/air-jazz/flights",
+    "headers": {
+      "X-API-Key": "dd764f40"
+    }
+  },
+  "airMoon": {
+    "url": "https://my.api.mockaroo.com/air-moon/flights",
+    "headers": {
+      "X-API-Key": "dd764f40"
+    }
+  },
+  "airBeam": {
+    "url": "https://my.api.mockaroo.com/air-beam/flights",
+    "headers": {
+      "X-API-Key": "dd764f40"
+    }
+  }
+}
